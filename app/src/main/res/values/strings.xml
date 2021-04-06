@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">TinderNavigation</string>
+    <string name="app_name">TinderFragments</string>
+    <string name="my_email_is">My email is</string>
+    <string name="next">Continue</string>
+    <string name="my_first_name_is">My first name is</string>
+    <string name="my_birthday_is">My birthday is</string>
+    <string name="gender_prompt">I am a</string>
+    <string name="woman">Woman</string>
+    <string name="prefer_not_to_say">Prefer not to say</string>
+    <string name="my_school_is">My school is</string>
+    <string name="man">Man</string>
 </resources>

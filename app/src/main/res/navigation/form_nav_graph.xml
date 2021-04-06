@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/form_nav_graph">
+
+    <fragment
+        android:id="@+id/destination_email_fragment"
+        android:name="com.logan.tindernavigation.FragmentEmail"
+        tools:layout="@layout/fragment_email">
+        <!--        needs an id, name that links to Class, and a layout to load for it-->
+        <!--        send email to next fragment-->
+        <action
+            android:id="@+id/action_email_to_name"
+            app:destination="@+id/destination_name_fragment">
+            <argument
+                android:name="email"
+                android:defaultValue=""
+                app:argType="string"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_name_fragment"
+        android:name="com.logan.tindernavigation.FragmentName"
+        tools:layout="@layout/fragment_name">
+
+        <!--        Receive email from first fragment-->
+        <!--        Good practice is to list receiving and then outgoing-->
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/action_name_to_birthday"
+            app:destination="@+id/destination_birthday_fragment">
+            <!--            send on email and name to next fragment-->
+            <argument
+                android:name="email"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="name"
+                android:defaultValue=""
+                app:argType="string"/>
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_birthday_fragment"
+        android:name="com.logan.tindernavigation.FragmentBirthday"
+        tools:layout="@layout/fragment_birthday">
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/action_birthday_to_gender"
+            app:destination="@+id/destination_gender">
+            <argument
+                android:name="email"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="name"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="birthday"
+                android:defaultValue=""
+                app:argType="string"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_gender_fragment"
+        android:name="com.logan.tindernavigation.FragmentGender"
+        tools:layout="@layout/fragment_gender">
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="birthday"
+            android:defaultValue=""
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/action_gender_to_school"
+            app:destination="@+id/destination_school">
+            <argument
+                android:name="email"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="name"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="birthday"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="gender"
+                android:defaultValue=""
+                app:argType="string"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_school"
+        android:name="com.logan.tindernavigation.FragmentSchool"
+        tools:layout="@layout/fragment_school">
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="birthday"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="gender"
+            android:defaultValue=""
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/action_school_to_profile"
+            app:destination="@+id/destination_profile">
+            <argument
+                android:name="email"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="name"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="birthday"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="gender"
+                android:defaultValue=""
+                app:argType="string"/>
+            <argument
+                android:name="school"
+                android:defaultValue=""
+                app:argType="string"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_profile"
+        android:name="com.logan.tindernavigation.FragmentProfile"
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="birthday"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="gender"
+            android:defaultValue=""
+            app:argType="string"/>
+        <argument
+            android:name="school"
+            android:defaultValue=""
+            app:argType="string"/>
+    </fragment>
+
+</navigation>

@@ -12,41 +12,37 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 
-public class FragmentName extends Fragment {
+public class EmailFragment extends Fragment {
     private MainViewModel mMainViewModel;
-    private EditText etName;
-    private Button next;
+    EditText etEmail;
+    Button next;
 
-    public FragmentName() {
-
+    public EmailFragment() {
+//        empty constructor
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
-        mMainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
-
-        View view = inflater.inflate(R.layout.fragment_name, container, false);
-
-        etName = view.findViewById(R.id.edittext_name);
-        next = view.findViewById(R.id.button_continue);
-
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_email, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etName.addTextChangedListener(new TextWatcher() {
+        mMainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        etEmail = view.findViewById(R.id.edittext_email);
+        next = view.findViewById(R.id.button_continue);
+
+        etEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -59,12 +55,12 @@ public class FragmentName extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                mMainViewModel.setName(etName.getText().toString());
+                mMainViewModel.setEmail(etEmail.getText().toString());
             }
         });
 
         next.setOnClickListener(v -> {
-            NavHostFragment.findNavController(this).navigate(R.id.destination_birthday_fragment);
+            NavHostFragment.findNavController(this).navigate(R.id.destination_name_fragment);
         });
     }
 }

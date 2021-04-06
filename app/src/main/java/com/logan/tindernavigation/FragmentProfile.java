@@ -9,8 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 public class FragmentProfile extends Fragment {
+    MainViewModel mainViewModel;
 
     private TextView name;
     private TextView birthday;
@@ -25,9 +27,10 @@ public class FragmentProfile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        return view;
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     @Override
@@ -38,8 +41,8 @@ public class FragmentProfile extends Fragment {
         birthday = view.findViewById(R.id.tv_birthday);
         school = view.findViewById(R.id.tv_school);
 
-        name.setText(requireArguments().get("name").toString());
-        birthday.setText(requireArguments().get("birthday").toString());
-        school.setText(requireArguments().get("school").toString());
+        name.setText(mainViewModel.getName());
+        birthday.setText(mainViewModel.getBirthday());
+        school.setText(mainViewModel.getSchool());
     }
 }

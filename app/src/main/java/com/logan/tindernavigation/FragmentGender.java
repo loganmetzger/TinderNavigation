@@ -9,10 +9,12 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 
 public class FragmentGender extends Fragment {
+    private MainViewModel mMainViewModel;
     private Button btnMale;
     private Button btnFemale;
     private Button next;
@@ -25,6 +27,8 @@ public class FragmentGender extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
+        mMainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
         View view = inflater.inflate(R.layout.fragment_gender, container, false);
 
@@ -40,11 +44,8 @@ public class FragmentGender extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         next.setOnClickListener(v -> {
-            Bundle fragmentSchoolArgs = new FragmentSchoolArgs.Builder().setEmail(requireArguments().get("email").toString())
-                    .setName(requireArguments().get("name").toString())
-                    .setBirthday(requireArguments().get("birthday").toString())
-                    .setGender(btnMale.getText().toString()).build().toBundle();
-            NavHostFragment.findNavController(this).navigate(R.id.destination_gender_fragment, fragmentSchoolArgs);
+            mMainViewModel.setGender("male");
+            NavHostFragment.findNavController(this).navigate(R.id.destination_school_fragment);
         });
     }
 }

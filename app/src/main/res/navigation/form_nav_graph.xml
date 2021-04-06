@@ -2,11 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/form_nav_graph">
+    android:id="@+id/form_nav_graph"
+    app:startDestination="@id/destination_email_fragment">
 
     <fragment
         android:id="@+id/destination_email_fragment"
-        android:name="com.logan.tindernavigation.FragmentEmail"
+        android:name="com.logan.tindernavigation.EmailFragment"
         tools:layout="@layout/fragment_email">
         <!--        needs an id, name that links to Class, and a layout to load for it-->
         <!--        send email to next fragment-->
@@ -50,7 +51,7 @@
 
     <fragment
         android:id="@+id/destination_birthday_fragment"
-        android:name="com.logan.tindernavigation.FragmentBirthday"
+        android:name="com.logan.tindernavigation.BirthdayFragment"
         tools:layout="@layout/fragment_birthday">
         <argument
             android:name="email"
@@ -119,7 +120,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/destination_school"
+        android:id="@+id/destination_school_fragment"
         android:name="com.logan.tindernavigation.FragmentSchool"
         tools:layout="@layout/fragment_school">
         <argument
